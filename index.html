@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .blk .in{max-width:1180px;margin:0 auto;position:relative}
 .blk:not(.hero) .in{padding-top:2.2rem}
 .in{max-width:1180px;margin:0 auto}
-.bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 0 .8rem;border-bottom:1px solid var(--rule);font-family:var(--heavy);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:0}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 0 .8rem;border-bottom:1px solid var(--rule);font-family:var(--cond);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:0}
 .bar .links{display:flex;gap:1.4rem}
 a.social{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:.4em;border-bottom:1px solid currentColor;padding-bottom:1px}
 .ig{flex:none}
@@ -81,7 +81,7 @@ img.logo-hero{height:22px!important;width:auto!important;max-width:none;margin:1
 @media (prefers-reduced-motion:reduce){.cherry img{animation:none}.cherry.pop img:not(.arr){animation:none;opacity:0}.cherry.pop .burst i{animation:none}}
 @media print{.cherry{display:none}}
 
-.hero .top{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--heavy);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.hero .top{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--cond);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
 .hero .top .links{display:flex;gap:1.4rem}
 .hero .top img.logo-hero{margin:1.4rem 0 1rem}
 
@@ -106,9 +106,9 @@ img.logo-hero{height:22px!important;width:auto!important;max-width:none;margin:1
 .tile{display:grid;grid-template-rows:auto 1.8rem .9em auto;gap:.15rem;border-top:1px solid var(--ink);padding-top:.6rem;text-align:center;justify-items:center}
 .tile .ph{display:flex;align-items:flex-end;justify-content:center;margin-bottom:.5rem;width:100%}
 .tile .ph img{width:auto}
-.tile b{font-family:var(--heavy);font-weight:400;font-size:.72rem;line-height:1.1;text-transform:uppercase;overflow:hidden}
+.tile b{font-family:var(--cond);font-weight:500;font-size:.8rem;letter-spacing:.04em;line-height:1.15;text-transform:uppercase;overflow:hidden}
 .tile .size{font-size:.58rem;line-height:1;letter-spacing:.14em;text-transform:uppercase;opacity:.7;align-self:end}
-.tile .p{font-family:var(--heavy);font-size:1.05rem;line-height:1.2;color:var(--red2);font-variant-numeric:tabular-nums}
+.tile .p{font-family:var(--cond);font-weight:500;letter-spacing:.03em;font-size:1.05rem;line-height:1.2;color:var(--red2);font-variant-numeric:tabular-nums}
 
 /* house rules */
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem 3rem}
@@ -125,9 +125,9 @@ img.logo-hero{height:22px!important;width:auto!important;max-width:none;margin:1
 .scene.vis .stage img{transform:none;opacity:1}
 .scene:hover .stage img{filter:none}
 .scene .txt{display:grid;grid-template-rows:auto auto auto;gap:.4rem;padding-top:1.6rem}
-.scene b{font-family:var(--heavy);font-weight:400;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:.95;text-transform:uppercase;height:1.9em;display:flex;align-items:end;color:var(--red2)}
+.scene b{font-family:var(--cond);font-weight:500;letter-spacing:.02em;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:.95;text-transform:uppercase;height:1.9em;display:flex;align-items:end;color:var(--red2)}
 .scene ul{list-style:none;margin:0;padding:0;font-size:.7rem;line-height:1.6;letter-spacing:.04em;text-transform:uppercase;opacity:.85;height:5.2em}
-.scene .p{font-family:var(--heavy);font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.scene .p{font-family:var(--cond);font-weight:500;font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums}
 @media (max-width:1000px){.scenes{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.scenes{grid-template-columns:1fr}}
 @media (max-width:480px){.scene{grid-template-columns:1fr;min-height:0}.stage{height:240px}.stage img{height:210px}}
@@ -139,9 +139,9 @@ img.logo-hero{height:22px!important;width:auto!important;max-width:none;margin:1
 .cols{display:flex;justify-content:flex-end;gap:.9rem;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:.2rem}
 .cols span{min-width:3.4em;text-align:right}
 .list{list-style:none;margin:0 0 1.2rem;padding:0}
-.list li{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:baseline;padding:.3rem 0;border-bottom:1px solid var(--rule);font-size:.74rem;font-weight:400;text-transform:uppercase;letter-spacing:.03em}
+.list li{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:baseline;padding:.3rem 0;border-bottom:1px solid var(--rule);font-family:var(--cond);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 .list li span{min-width:0}
-.list li i{font-style:normal;font-family:var(--heavy);font-size:.8rem;font-variant-numeric:tabular-nums;min-width:3.4em;text-align:right;color:var(--red2)}
+.list li i{font-style:normal;font-family:var(--cond);font-weight:500;font-size:.85rem;letter-spacing:.03em;font-variant-numeric:tabular-nums;min-width:3.4em;text-align:right;color:var(--red2)}
 .list li i:empty::before{content:"–";opacity:.4;color:var(--ink)}
 .list li em{font-style:normal;font-weight:300;opacity:.7;text-transform:none;letter-spacing:0}
 .list.one li{grid-template-columns:1fr auto}
@@ -172,7 +172,7 @@ footer .h{margin-bottom:.4rem}
   #bottle .tiles,#bottle2 .tiles{grid-template-columns:repeat(auto-fit,minmax(60px,1fr));gap:1rem .6rem}
   .pair{grid-template-columns:7fr 3fr}
   #bottle .tile,#bottle2 .tile{grid-template-rows:auto 1.9rem 1em auto}
-  #bottle .tile b,#bottle2 .tile b{font-size:.72rem}
+  #bottle .tile b,#bottle2 .tile b{font-size:.78rem}
   #bottle .tile .p,#bottle2 .tile .p{font-size:1.3rem}
   #bottle .tile .size,#bottle2 .tile .size{font-size:.68rem}
   #bottle h3,#bottle2 h3{font-size:1.9rem}
@@ -269,7 +269,7 @@ footer .h{margin-bottom:.4rem}
   <h2 class="h lg r">House<br><em>Rules</em></h2>
   <div class="rules" id="rules"></div>
   <p class="h md r" style="margin-top:3rem">See you <em>tonight.</em></p>
-  <p class="meta"><i>Subject to a 10% service charge and applicable taxes</i></p>
+  <p class="meta"><b>Prices in Thai Baht</b><i>Subject to a 10% service charge and applicable taxes</i></p>
   <p class="lead"><a class="social" href="https://www.24blvd.com" target="_blank" rel="noopener">Find out more · 24blvd.com</a></p>
   <p class="lead"><a class="social" href="https://www.instagram.com/upperhousebangkok" target="_blank" rel="noopener"><svg class="ig" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>@upperhousebangkok</a></p>
 </div></footer>
@@ -318,19 +318,20 @@ const sig = [["Last Train","last-train",["Whisky","Sweet & sour"]],
   ["Cupa Cupa","cupa-cupa",["Lillet Rosé","Fruity","Complex"]],
   ["Cherry Hill","cherry-hill",["Cherry-infused gin","Complex","Highball"]]];
 const classic = [["Red Bull Vodka",450],
+  ["Whisky Sour",450],
   ["Cosmopolitan",450],
   ["Moscow Mule",450],
   ["Pisco Sour",450],
   ["Mojito",450],
   ["Long Island Iced Tea",450],
   ["Piña Colada",450],
-  ["Bloody Mary",490]];
-const forward = [["Negroni",490],
+  ["Bloody Mary",450]];
+const forward = [["Whisky Sour",490],
+  ["Negroni",490],
   ["Boulevardier",490],
   ["Vodka / Gin Martini",490],
   ["Old Fashioned",490],
-  ["Manhattan",490],
-  ["Whisky Sour",490]];
+  ["Manhattan",490]];
 const shots = [["Ghosted <em>vodka</em>",1500],
   ["Confidential <em>whisky</em>",1500],
   ["Late Invite <em>tequila</em>",1500]];
@@ -384,14 +385,16 @@ const spirits = [["Gin",[["Bombay",450,4900],
   ["Monkey Shoulder",450,5900],
   ["Johnnie Walker Gold Label",450,5900],
   ["Chivas 12 Yr",500,5900],
-  ["Chivas Regal 18 Yr","",8900],
-  ["Chivas Crystal Gold",500,6000],
+  ["Chivas Regal 18 Yr",990,8900],
+  ["Highland Park 10 Yr","",7900],
   ["Hibiki Harmony","",12900],
   ["Johnnie Walker Blue Label","",25900]]],
   ["Single Malt",[["Glenfiddich 12 Yr",450,5900],
   ["Glenfiddich 15 Yr",650,8500],
   ["Glenfiddich 18 Yr",900,12900],
   ["Balvenie 12 Yr",600,7500],
+  ["Bowmore 12 Yr",600,8000],
+  ["Bowmore 15 Yr",700,9900],
   ["The Macallan 12 Yr",950,12900],
   ["The Macallan 15 Yr",1200,22900],
   ["The Macallan 18 Yr","",55900]]],
@@ -433,7 +436,7 @@ const soft = [["Beer",[["Singha",300],
   ["Singha (draft)",320],
   ["Asahi (draft)",320]]],
   ["Soft Drinks",[["Coke / Coke Zero / Sprite",140],
-  ["Acqua Panna",140],
+  ["Acqua Panna / Evian water",140],
   ["Ginger ale",140],
   ["S.Pellegrino sparkling water",140],
   ["Ice bucket",150]]],
@@ -445,7 +448,7 @@ const soft = [["Beer",[["Singha",300],
 const rules = [["id","Gov't issued ID card<br>At least 20 y/o"],
   ["dress","Upscale casual only<br>No shorts, flip-flops, tank tops and no sportswear"],
   ["weapons","No weapons, harassment and fights"],
-  ["smoking","No smoking cigarettes<br>No smoking cannabis"],
+  ["smoking","No smoking cigarettes<br>No smoking cannabis in non-designated area"],
   ["drugs","No drugs<br>No illegal substances"],
   ["food","No outside food &amp; drinks"],
   ["puking","No puking, ฿5,000 will be charged for deep cleaning &amp; disturbing other guests"],
