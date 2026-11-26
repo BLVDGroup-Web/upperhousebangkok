@@ -649,5 +649,6 @@ svg.addEventListener("keydown", e => { const s = e.target.closest(".fp-spot"); i
 document.addEventListener("click", e => { if (!card.hidden && !e.target.closest(".fp-spot, .fp-chip")) pick(null); });
 })();
 </script>
+<script>addEventListener("load",()=>{if(/^#floor-?plan$/i.test(location.hash)){const b=document.querySelector("#go-plan, a[href='#floorplan']");if(b)setTimeout(()=>b.click(),350);}});</script>
 </body>
 </html>
