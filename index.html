@@ -249,6 +249,40 @@ footer .h{margin-bottom:.4rem}
   footer .h.md{margin-top:3rem!important;font-size:2.2rem}
   #cocktails .h.lg{margin-bottom:.6rem}#cocktails .meta{margin-bottom:.8rem}
 }
+
+/* interactive floor plan */
+.fp{position:relative;margin:1.2rem auto 0;max-width:900px}
+.fp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.fp-chip{font:500 11px/1 "Oswald","Arial Narrow",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,241,236,.6);background:none;border:1px solid rgba(243,241,236,.28);border-radius:999px;padding:9px 14px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.fp-chip:hover,.fp-chip:focus-visible{color:#f3f1ec;border-color:rgba(243,241,236,.6);outline:none}
+.fp-chip[aria-pressed="true"]{color:#141313;background:#f3f1ec;border-color:#f3f1ec}
+.fp-scroll{overflow-x:auto;scrollbar-width:thin}
+.fp-map{position:relative}
+.fp-map img{display:block;width:100%;height:auto;margin:0;padding:0;max-width:none;max-height:none}
+.fp-spots{position:absolute;inset:0;width:100%;height:100%}
+.fp-spot{cursor:pointer;outline:none}
+.fp-spot .hit{fill:transparent;stroke:transparent;stroke-width:3;transition:fill .25s,stroke .25s}
+.fp-spot:hover .hit,.fp-spot:focus-visible .hit{fill:rgba(243,241,236,.12);stroke:rgba(243,241,236,.6)}
+.fp-spot.match .hit{fill:rgba(168,64,95,.3);stroke:#a8405f}
+.fp-spot.on .hit{fill:rgba(168,64,95,.5);stroke:#a8405f;stroke-width:4}
+.fp-card{position:absolute;z-index:2;width:230px;padding:16px 18px;background:#141313;color:#f3f1ec;border:1px solid rgba(243,241,236,.28);box-shadow:0 12px 32px rgba(0,0,0,.45);pointer-events:none;text-align:left}
+.fp-card[hidden]{display:none}
+.fp-card .t{display:block;font:500 10.5px/1.3 "Oswald","Arial Narrow",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a8405f}
+.fp-card h3{margin:6px 0 12px;font-family:"Anton","Impact",sans-serif;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.fp-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font:500 12px/1.3 "Oswald","Arial Narrow",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.fp-card dt{color:rgba(243,241,236,.6)}
+.fp-card dd{margin:0;text-align:right}
+.fp-hint{font:500 11px/1.4 "Oswald","Arial Narrow",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,241,236,.6);margin:12px 0 0}
+.fp-hint .ph{display:none}
+@media (max-width:700px){
+  .fp-map{width:760px}
+  .fp-card{position:static;width:auto;margin-top:14px;transform:none!important;box-shadow:none}
+  .fp-hint .ph{display:inline}
+}
+@media print{
+  .fp-chips,.fp-spots,.fp-card,.fp-hint{display:none!important}
+  .fp-scroll,.fp-map{display:contents}
+}
 </style>
 </head>
 <body>
@@ -327,7 +361,7 @@ footer .h{margin-bottom:.4rem}
 
 <section class="blk dark" id="floorplan"><div class="in">
   <h2 class="h lg r rules-h"><button type="button" class="rules-toggle" id="planToggle" aria-expanded="false" aria-controls="planWrap"><span>Floor<br><em>Plan</em></span><span class="plus" aria-hidden="true"></span></button></h2>
-  <div class="rules-wrap" id="planWrap"><div class="plan"><a href="img/floorplan.webp" target="_blank" rel="noopener" aria-label="Open the floor plan full size"><img src="img/floorplan.webp" width="1819" height="1100" loading="lazy" alt="Upper House floor plan: bar, VIP zones V1 to V13, standing tables S1 to S19, DJ area with DJ1 to DJ6, VV1 to VV3, couches C1 to C3, balcony with O1 to O4 and smoking area, foyer, entrance and exits."></a></div></div>
+  <div class="rules-wrap" id="planWrap"><div class="plan"><div class="fp" id="fp"><div class="fp-chips" role="group" aria-label="Show tables by zone"></div><div class="fp-scroll" data-lenis-prevent-touch><div class="fp-map"><img src="img/floorplan.webp" width="1819" height="1100" loading="lazy" alt="Upper House floor plan: bar, VIP zones V1 to V13, standing tables S1 to S19, DJ area with DJ1 to DJ6, VV1 to VV3, couches C1 to C3, balcony with O1 to O4 and smoking area, foyer, entrance and exits."><svg class="fp-spots" viewBox="0 0 1819 1100" aria-label="Tables"></svg></div></div><aside class="fp-card" aria-live="polite" hidden></aside><p class="fp-hint"><span class="ph">Swipe the plan sideways · </span>Tap a table to see its zone and guests</p></div></div></div>
 </div></section>
 
 <footer class="blk dark"><div class="in">
@@ -572,6 +606,47 @@ const setPlan=o=>{pw.classList.toggle("open",o);pt.setAttribute("aria-expanded",
 pt.addEventListener("click",()=>setPlan(!pw.classList.contains("open")));
 // "View floorplan" box + nav link: open the plan, then scroll to it
 document.querySelectorAll('a[href="#floorplan"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();e.stopImmediatePropagation();setPlan(true);const t=document.getElementById("floorplan");setTimeout(()=>{lenis?lenis.scrollTo(t,{offset:-70}):t.scrollIntoView({behavior:"smooth"});},60);},true));
+</script>
+<script>
+(() => {
+const W = 1819, H = 1100;
+const SPOTS = [["V13","vip","vip","c",[418,205,25]],["V12","vip","vip","c",[490,227,25]],["V11","vip","vip","c",[559,249,25]],["V10","vip","vip","c",[631,271,25]],["V9","vip","vip","c",[715,285,25]],["V8","vip","vip","c",[787,285,25]],["V7","vip","vip","c",[860,285,25]],["V6","vip","vip","c",[932,285,25]],["V5","vip","vip","c",[1002,285,25]],["V4","vip","vip","c",[1195,245,25]],["V3","vip","vip","c",[1240,235,25]],["V2","vip","vip","c",[1312,215,25]],["V1","vip","vip","c",[1357,205,25]],["S11","floor","stand","c",[728,397,25]],["S9","floor","stand","c",[800,397,25]],["S7","floor","stand","c",[876,397,25]],["S5","floor","stand","c",[951,397,25]],["S3","floor","stand","c",[1024,397,25]],["S12","floor","stand","c",[705,451,25]],["S10","floor","stand","c",[780,451,25]],["S8","floor","stand","c",[856,451,25]],["S6","floor","stand","c",[932,451,25]],["S4","floor","stand","c",[1006,451,25]],["S13","floor","stand","c",[624,419,25]],["S14","floor","stand","c",[572,486,25]],["S15","floor","stand","c",[618,542,25]],["S16","floor","stand","c",[551,568,25]],["S17","floor","stand","c",[595,622,25]],["S18","floor","stand","c",[530,647,25]],["S19","floor","stand","c",[609,707,25]],["S1","floor","stand","r",[1084,226,45,47]],["S2","floor","stand","r",[1086,274,44,47]],["DJ6","dj","dj","r",[690,493,36,42]],["DJ5","dj","dj","r",[727,493,36,42]],["DJ4","dj","dj","r",[763,493,36,42]],["DJ3","dj","dj","r",[958,493,35,42]],["DJ2","dj","dj","r",[994,493,36,42]],["DJ1","dj","dj","r",[1031,493,34,42]],["VV1","vvip","vvip","r",[1252,410,100,116]],["VV2","vvip","vvip","r",[1120,446,78,58]],["VV3","vvip","vvip","r",[1108,520,120,125]],["C3","couch","couch","r",[140,648,140,128]],["C2","couch","couch","r",[285,690,130,132]],["C1","couch","couch","r",[434,734,128,130]],["O1","balcony","balcony","r",[1568,70,137,120]],["O2","balcony","balcony","r",[1425,125,128,108]],["O3","balcony","balcony","r",[1538,306,90,82]],["O4","balcony","balcony","r",[1553,388,90,62]]];  // [table, zone, type, shape c|r, geometry in floor plan px]
+const ZONES = {"vip": "VIP Zone", "vvip": "VVIP Lounge", "floor": "Main Floor", "dj": "DJ Area", "couch": "Couches", "balcony": "Balcony"};
+const TYPES = {"vip":["VIP table · elevated floor",8],"vvip":["VVIP sofa",12],"stand":["Standing table",6],"dj":["DJ booth table",null],"couch":["Couch",10],"balcony":["Balcony table · smoking area",10]};  // [label, guests]
+const root = document.getElementById("fp"); if (!root) return;
+const svg = root.querySelector(".fp-spots"), card = root.querySelector(".fp-card"), chips = root.querySelector(".fp-chips"), NS = "http://www.w3.org/2000/svg";
+const els = SPOTS.map(([n, z, t, s, g]) => {
+  const a = document.createElementNS(NS, "g"); a.setAttribute("class", "fp-spot"); Object.assign(a.dataset, { n, z, t });
+  a.setAttribute("tabindex", "0"); a.setAttribute("role", "button"); a.setAttribute("aria-label", `${n}, ${TYPES[t][0]}, ${ZONES[z]}`);
+  const e = document.createElementNS(NS, s === "c" ? "circle" : "rect"); e.setAttribute("class", "hit");
+  if (s === "c") [["cx", g[0]], ["cy", g[1]], ["r", g[2]]].forEach(([k, v]) => e.setAttribute(k, v));
+  else { ["x", "y", "width", "height"].forEach((k, i) => e.setAttribute(k, g[i])); e.setAttribute("rx", 8); }
+  a.appendChild(e); svg.appendChild(a); return a;
+});
+const phone = () => matchMedia("(max-width:700px)").matches;
+function pick(el) {
+  els.forEach(s => s.classList.toggle("on", s === el));
+  if (!el) { card.hidden = true; return; }
+  const [label, pax] = TYPES[el.dataset.t];
+  card.innerHTML = `<span class="t">${label}</span><h3>${el.dataset.n}</h3><dl><dt>Zone</dt><dd>${ZONES[el.dataset.z]}</dd><dt>Guests</dt><dd>${pax ? "Up to " + pax : "Ask our team"}</dd></dl>`;
+  card.hidden = false;
+  if (phone()) { card.style.cssText = ""; card.scrollIntoView({ block: "nearest", behavior: "smooth" }); return; }
+  const b = el.getBBox(), right = b.x + b.width / 2 > W / 2, low = b.y + b.height / 2 > H / 2;
+  const m = root.querySelector(".fp-map"), k = m.clientWidth / W, ox = m.offsetLeft - root.querySelector(".fp-scroll").scrollLeft, oy = m.offsetTop;
+  card.style.left = (ox + (right ? b.x - 14 : b.x + b.width + 14) * k) + "px";
+  card.style.top = (oy + (low ? b.y + b.height : b.y) * k) + "px";
+  card.style.transform = `translate(${right ? "-100%" : "0"}, ${low ? "-100%" : "0"})`;
+}
+function filter(z) {
+  chips.querySelectorAll(".fp-chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.z === z));
+  els.forEach(s => s.classList.toggle("match", z !== "all" && s.dataset.z === z)); pick(null);
+}
+chips.innerHTML = [["all", "All tables"], ...Object.entries(ZONES)].map(([k, l]) => `<button class="fp-chip" type="button" data-z="${k}" aria-pressed="${k === "all"}">${l}</button>`).join("");
+chips.addEventListener("click", e => { const c = e.target.closest(".fp-chip"); if (c) filter(c.dataset.z); });
+svg.addEventListener("click", e => { const s = e.target.closest(".fp-spot"); if (s) pick(s.classList.contains("on") ? null : s); });
+svg.addEventListener("keydown", e => { const s = e.target.closest(".fp-spot"); if (s && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pick(s); } });
+document.addEventListener("click", e => { if (!card.hidden && !e.target.closest(".fp-spot, .fp-chip")) pick(null); });
+})();
 </script>
 </body>
 </html>
